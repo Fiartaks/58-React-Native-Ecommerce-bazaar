@@ -14,6 +14,9 @@ import type { Item, NavigationProps } from "../../typs";
 import Carousel from "react-native-reanimated-carousel";
 import { bannerOne, bannerThree, bannerTwo } from "../assets";
 import { useNavigation } from "@react-navigation/native";
+import { ShoppingCartIcon } from "react-native-heroicons/outline";
+import IsNewBadge from "../components/IsNewBadge";
+import Loader from "../components/Loader";
 
 const { height, width } = Dimensions.get("window");
 
@@ -38,6 +41,7 @@ const Home = () => {
     getData();
   }, []);
 
+
   const images = [bannerOne, bannerTwo, bannerThree];
 
   const RenderItem = ({ item }: Item) => {
@@ -55,6 +59,47 @@ const Home = () => {
           alt="product-image"
           style={styles.img}
         />
+
+        <View style={styles.textView}>
+          <Text>{item?.title}</Text>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              marginVertical: 5,
+            }}
+          >
+            <View>
+              <Text
+                style={{
+                  fontWeight: "600",
+                  color: colors.textBlack,
+                  fontSize: 12,
+                }}
+              >
+                ${item?.price}
+              </Text>
+              <Text
+                style={{ fontSize: 12, textDecorationLine: "line-through" }}
+              >
+                ${item?.previousPrice}
+              </Text>
+            </View>
+            <TouchableOpacity
+              style={{
+                backgroundColor: colors.designColor,
+                paddingHorizontal: 10,
+                paddingVertical: 7,
+                borderRadius: 6,
+                marginLeft:-50,
+              }}
+            >
+              <ShoppingCartIcon size={20} color={colors.textBlack} />
+            </TouchableOpacity>
+          </View>
+        </View>
+        {item?.isNew && <IsNewBadge />}
       </TouchableOpacity>
     );
   };
@@ -64,7 +109,7 @@ const Home = () => {
       <Header />
       <View>
         {isLoading ? (
-          <Text>Loader</Text>
+          <Loader title='Product is Loading...' />
         ) : (
           <FlatList
             data={productArray}
@@ -129,5 +174,8 @@ const styles = StyleSheet.create({
   img: {
     flex: 1,
     objectFit: "cover",
+  },
+  textView: {
+    padding: 10,
   },
 });
