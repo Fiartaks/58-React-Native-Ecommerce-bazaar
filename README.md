@@ -8,4 +8,7 @@ drawer, reanimated-carousel, gesture-handler, screens, safe-area-context
 
 npm install react-native-heroicons
 
+https://jsonserver.reactbd.com/amazonpro/ 
+this / is very important so much important. 
+
 
