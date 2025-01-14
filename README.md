@@ -17,3 +17,5 @@ pages added
 
 npm install @react-async-storage/async-storage
 npm install @react-native-async-storage/async-storage
+
+npm install redux-persist
