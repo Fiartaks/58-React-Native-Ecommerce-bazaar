@@ -11,4 +11,6 @@ npm install react-native-heroicons
 https://jsonserver.reactbd.com/amazonpro/ 
 this / is very important so much important. 
 
+pages added
+
 
