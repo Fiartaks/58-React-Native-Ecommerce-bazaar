@@ -13,4 +13,7 @@ this / is very important so much important.
 
 pages added
 
+ npm i react-redux @reduxjs/toolkit
 
+npm install @react-async-storage/async-storage
+npm install @react-native-async-storage/async-storage
