@@ -17,6 +17,9 @@ import { useNavigation } from "@react-navigation/native";
 import { ShoppingCartIcon } from "react-native-heroicons/outline";
 import IsNewBadge from "../components/IsNewBadge";
 import Loader from "../components/Loader";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/orebiSlices";
+import Toast from "react-native-toast-message";
 
 const { height, width } = Dimensions.get("window");
 
@@ -25,6 +28,9 @@ const Home = () => {
   const [productArray, setProductArray] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const dispatch =useDispatch()
+
 
   const getData = async () => {
     try {
@@ -75,7 +81,7 @@ const Home = () => {
                 style={{
                   fontWeight: "600",
                   color: colors.textBlack,
-                  fontSize: 12,
+                  fontSize: 13,
                 }}
               >
                 ${item?.price}
@@ -87,6 +93,7 @@ const Home = () => {
               </Text>
             </View>
             <TouchableOpacity
+              onPress={()=>{dispatch(addToCart(item),Toast.show({type:'success', text1:`${item?.title} added successfully`,}))}}
               style={{
                 backgroundColor: colors.designColor,
                 paddingHorizontal: 10,
