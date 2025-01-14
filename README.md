@@ -19,3 +19,6 @@ npm install @react-async-storage/async-storage
 npm install @react-native-async-storage/async-storage
 
 npm install redux-persist
+
+npm install react-native-toast-message
+
