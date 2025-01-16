@@ -22,3 +22,8 @@ npm install redux-persist
 
 npm install react-native-toast-message
 
+"react-native-toast-message"
+
+"react-native-heroicons": "^4.0.0",
+    "react-native-reanimated": "~3.16.1",
+    "react-native-reanimated-carousel":
