@@ -27,3 +27,7 @@ npm install react-native-toast-message
 "react-native-heroicons": "^4.0.0",
     "react-native-reanimated": "~3.16.1",
     "react-native-reanimated-carousel":
+
+
+ "@react-navigation/drawer": "^7.1.1",
+    "@react-navigation/native": "^7.0.14
