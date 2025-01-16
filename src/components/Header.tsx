@@ -10,8 +10,10 @@ import { Bars4Icon, ShoppingCartIcon } from "react-native-heroicons/outline";
 import { colors } from "../constants";
 import { logo } from "../assets";
 import { useNavigation } from "@react-navigation/native";
+import { useSelector } from "react-redux";
 const Header = () => {
   const navigation:any =useNavigation()
+  const {productData}=useSelector((state:any)=>state?.orebi)
   return (
     <SafeAreaView>
       <View style={styles.container}>
@@ -28,7 +30,7 @@ const Header = () => {
         <Pressable onPress={()=>navigation.navigate('Cart')} style={styles.cartIcon}>
           <ShoppingCartIcon color={colors.textBlack} size={22} />
           <View style={styles.cartCount}>
-            <Text style={styles.cartText}>0</Text>
+            <Text style={styles.cartText}>{productData?.length > 0 ? productData.length : 0}</Text>
           </View>
         </Pressable>
       </View>

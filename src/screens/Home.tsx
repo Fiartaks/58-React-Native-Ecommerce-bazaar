@@ -29,8 +29,7 @@ const Home = () => {
   const [refreshing, setRefreshing] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const dispatch =useDispatch()
-
+  const dispatch = useDispatch();
 
   const getData = async () => {
     try {
@@ -46,7 +45,6 @@ const Home = () => {
   useEffect(() => {
     getData();
   }, []);
-
 
   const images = [bannerOne, bannerTwo, bannerThree];
 
@@ -93,13 +91,21 @@ const Home = () => {
               </Text>
             </View>
             <TouchableOpacity
-              onPress={()=>{dispatch(addToCart(item),Toast.show({type:'success', text1:`${item?.title} added successfully`,}))}}
+              onPress={() => {
+                dispatch(
+                  addToCart(item),
+                  Toast.show({
+                    type: "success",
+                    text1: `${item?.title} added successfully`,
+                  })
+                );
+              }}
               style={{
                 backgroundColor: colors.designColor,
                 paddingHorizontal: 10,
                 paddingVertical: 7,
                 borderRadius: 6,
-                marginLeft:-50,
+                marginLeft: -50,
               }}
             >
               <ShoppingCartIcon size={20} color={colors.textBlack} />
@@ -116,7 +122,7 @@ const Home = () => {
       <Header />
       <View>
         {isLoading ? (
-          <Loader title='Product is Loading...' />
+          <Loader title="Product is Loading..." />
         ) : (
           <FlatList
             data={productArray}

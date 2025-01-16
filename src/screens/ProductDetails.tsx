@@ -15,12 +15,17 @@ import DetailsView from "../components/DetailsView";
 import PriceFormat from "../components/PriceFormat";
 import { ArrowRightIcon } from "react-native-heroicons/outline";
 import IsNewBadge from "../components/IsNewBadge";
+import { addToCart } from "../redux/orebiSlices";
+import Toast from "react-native-toast-message";
+import { useDispatch } from "react-redux";
 
 const { width, height } = Dimensions.get("window");
 const ProductDetails = ({ route }: any) => {
   const _id = route?.params?._id;
   const [productData, setProductData] = useState<ProductProps | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  const dispatch = useDispatch();
 
   const getData = async () => {
     try {
@@ -72,6 +77,17 @@ const ProductDetails = ({ route }: any) => {
               </Text>
             </View>
             <Pressable
+
+                 onPress={() => {
+                               dispatch(
+                                 addToCart(productData),
+                                 Toast.show({
+                                   type: "success",
+                                   text1: `${productData?.title} added successfully`,
+                                 })
+                               );
+                             }}
+
               style={{
                 backgroundColor: colors.designColor,
                 paddingHorizontal: 10,
